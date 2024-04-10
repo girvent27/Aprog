@@ -13,24 +13,24 @@ function read_page(pages, index::Int) #Lê a pagina que o usuário deseja ir e m
         if page_index == 0 && pages[1] == 0 #se estiver no menu inicial e digitar '0', acaba o programa
             return pages[1] = -1
  
-         else #Senão, incrementa à index seguinte do array para escolher a opção da pagina atual/seguinte
-            pages[index] = page_index
-            index = index + 1
-            return pages, index 
-            
-            if page_index == 0 #Mas, se o número digitado for 0, volta ao menu anterior
-                index = index - 1
+         else #Senão, segue a funcionalidade básica de mudança de menu.  
+            if page_index == 0 #Se o número digitado for 0, volta ao menu anterior
+                index = index - 1 #Mudando a Index para a anterior para mudar o menu atual para o anterior
                 pages[index] = 0
-
+                return pages, index
+                
+            else #Senão, incrementa à index seguinte do array para escolher a opção da pagina atual/seguinte
+                pages[index] = page_index 
+                index = index + 1 #Mudando a Index para a anterior para mudar o menu atual para o anterior
                 return pages, index 
             end
          end
 end
 
-function menu(title::String , options) #Menu generico que recebe o titulo e imprime as opções listadas
+function menu(title::String , options, ) #Menu generico que recebe o titulo e imprime as opções listadas
+    clear()
     println("==== $title ====\n")
     println("Opcões:")
-    #foreach(x -> println(x), options)
     for i in 1:length(options)
         print("$i - ")
         println(options[i])
@@ -45,7 +45,7 @@ end
 
 
 function clear() # Limpar terminal de comando para cada novo menu
-    Base.run(`dir`)
+    Base.run(`clear`)
 end
 
 function main()
@@ -57,24 +57,23 @@ function main()
             println("$pages e $index")
             options = ["Angulo", "Area", "Comprimento", "Forca", "Massa", "Moeda","Pressão", "Temperatura","Velocidade", "Volume"]
             menu("Conversor de Medidas, Unidades e Moedas", options)
-            read_page(pages, index)
+            (pages, index) = read_page(pages, index)
         end
 
         if pages[1] == 1
             println("$pages e $index")
             options = ["Radiano -> Grau", "Grau -> Radiano", "Imprimir Tabela Radiano -> Grau", "Imprimir Tabela Radiano -> Grau"]
             menu("Conversão de Angulos", options)
-            read_page(pages, index)
+            (pages, index) = read_page(pages, index)
         end
 
         if pages[1] == 2
             println("$pages e $index")
             options = ["Decimetro Quadrado (dm²)", "Milimetro Quadrado (mm²)", "Centimetro Quadrado(cm²)", "Metro Quadrado(m²)", "Kilometro Quadrado(Km²)"]
             menu("Conversão de Area", options)
-            read_page(pages, index)
+            (pages, index) = read_page(pages, index)
         end
     end
 
     return "Fim do Programa"
 end
- 
