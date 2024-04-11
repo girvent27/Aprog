@@ -1,4 +1,5 @@
 include("menu.jl")
+include("contas.jl")
 
 function main()
     pages = [0, 0, 0]

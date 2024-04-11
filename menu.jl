@@ -13,7 +13,8 @@ function read_page(pages, index::Int, options) #Lê a pagina que o usuário dese
             page_index = parse(Int, readline())
         end
         if page_index == 0 && pages[1] == 0 #se estiver no menu inicial e digitar '0', acaba o programa
-            return pages[1] = pages[1] - 1
+            pages[1] = pages[1] - 1
+            return pages            
  
          else #Senão, segue a funcionalidade básica de mudança de menu.  
             if page_index == 0 #Se o número digitado for 0, volta ao menu anterior
@@ -52,5 +53,5 @@ end
 
 
 function clear() # Limpar terminal de comando para cada novo menu
-#    Base.run(`clear`)
+#    Base.run(`cls`)
 end
