@@ -1,9 +1,14 @@
 include("contas.jl")
 
-function menu(title::String , options) #Menu generico que recebe o titulo e imprime as opções listadas
+function menu(title::String , options, pages) #Menu generico que recebe o titulo e imprime as opções listadas
     clear()
     println("\n ==========================\n|          $title          \n =================================")
-    println("Opcões:")
+    if pages[2] > 0
+        println("Converter $(options[pages[2]]) para:")
+    else
+        println("Escolha uma das Opcões:")
+    end
+    
     for i in 1:length(options)
         print("\n  $i - ")
         print(options[i])
@@ -143,7 +148,39 @@ function conversion_menu_moeda(pages, index, options, number_type, negative_numb
     result = number_1 * number_2
 
     println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
-    return (pages, index) = read_page(pages, index, options)
+    repeat_opt = read_simple()
+    if repeat_opt == 1
+        repeat = true
+    end
+    if repeat_opt == 0
+        pages[2] = 0
+        pages[3] = 0
+        index = 2
+        return pages, index
+    end
+
+    while repeat
+        clear()
+        title = init_options[pages[1]]
+        println("==== Conversor de $title ====\n")
+        print("Valor da cotação de 1 $(options[pages[2]]) em $(options[pages[3]]): $number_1 \n")
+
+        print("Digite a quantidade, real positivo, em $(options[pages[2]]) a ser convertido: ")
+        number_2 = read_conversion(number_type, negative_number)
+        result = number_1 * number_2
+
+        println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
+        repeat_opt = read_simple()
+        if repeat_opt == 1
+            repeat = true
+        end
+        if repeat_opt == 0
+            pages[2] = 0
+            pages[3] = 0
+            index = 2
+            return pages, index
+        end
+    end
 end
 
 function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo de variavel (int / float) e se usara numeros negativos
@@ -152,24 +189,27 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
             number = parse(Int, readline())
+            return number
+
         end
     end
    if type == "int" && negative #Para Inteiros
     number = parse(Int, readline())
+    return number
    end
 
     if type == "float" && !negative  #Para Decimais Positivos
         number = parse(Float64, readline())
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
-            number = parse(Float64, readline())
-            return round(number, digits = 2)
+            number = round(parse(Float64, readline()), digits = 2)
+            return number
 
         end
     end
     if type == "float" && negative #Para Decimais
-        number = parse(Float64, readline())
-        return round(number, digits = 2)
+        number = round(parse(Float64, readline()), digits = 2)
+        return number
     end
     
 end

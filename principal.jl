@@ -12,14 +12,14 @@ function main()
 
     while pages[1] >= 0 
         if pages[1] == 0
-            menu("Conversor de Medidas, Unidades e Moedas", init_options)
+            menu("Conversor de Medidas, Unidades e Moedas", init_options, pages)
 
             (pages, index) = read_page(pages, index, init_options)
         end
 
         if pages[1] == 1
             options = ["Radiano -> Grau", "Grau -> Radiano", "Imprimir Tabela Radiano -> Grau", "Imprimir Tabela Radiano -> Grau"]
-            menu("Conversão de Angulos", options)
+            menu("Conversão de Angulos", options, pages)
 
             return
         end
@@ -43,7 +43,7 @@ function main()
                 "milha quadrada",
                 "légua quadrada"
             ]
-            menu("Conversão de Area", options)
+            menu("Conversão de Area", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -53,7 +53,7 @@ function main()
         if pages[1] == 3
             options = ["quilômetro", "hectômetro", "decâmetro", "metro", "decímetro", "centímetro", "milímetro", "polegada", "pé", "jarda", "rod", "furlong", "corrente", "mil", "milha", "légua"]
 
-            menu("Conversão de Comprimento", options)
+            menu("Conversão de Comprimento", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -63,7 +63,7 @@ function main()
         if pages[1] == 4
             options = ["Newton", "Quilograma força", "Dina", "Libra-força"]
 
-            menu("Conversão de Força", options)
+            menu("Conversão de Força", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -73,7 +73,7 @@ function main()
         if pages[1] == 5
             options = ["quilograma", "hectograma", "decagrama", "grama", "decigrama", "centigrama", "miligrama", "Tonelada curta", "Quarto curto", "Quintal curto", "Arroba", "Libra avoirdupois", "Onça avoirdupois", "Dracma avoirdupois", "Grão"]
 
-            menu("Conversão de Massa", options)
+            menu("Conversão de Massa", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -83,7 +83,7 @@ function main()
         if pages[1] == 6
             options = ["Dólar Americano (USD)", "Libra Esterlina (GBP)", "Euro (EUR)", "Iene Japonês (JPY)", "Franco Suíço (CHF)", "Dólar Australiano (AUD)", "Dólar Canadense (CAD)", "Real (BRL)", "Renminbi (RMB)"]
 
-            menu("Conversão de Moedas", options)
+            menu("Conversão de Moedas", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -92,7 +92,7 @@ function main()
         end
         if pages[1] == 7
             options = ["Megapascal", "Quilopascal", "PascalSistema", "KSI", "PSI"]
-            menu("Conversão de Pressão", options)
+            menu("Conversão de Pressão", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -101,7 +101,7 @@ function main()
         end
         if pages[1] == 8
             options = ["Kelvin", "Grau Celsius", "Grau Fahrenheit", "Grau Rankine", "Grau Réaumur", "Grau Newton", "Grau Delisle"]
-            menu("Conversão de Temperatura", options)
+            menu("Conversão de Temperatura", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -110,7 +110,7 @@ function main()
         end
         if pages[1] == 9
             options = ["Quilômetro por hora", "Metro por segundo", "Quilômetro por segundo", "Pé por segundo", "Milha por hora", "Milha por segundo"]
-            menu("Conversão de Temperatura", options)
+            menu("Conversão de Temperatura", options, pages)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
@@ -119,12 +119,12 @@ function main()
         end
         if pages[1] == 10
             options = ["Sólido", "Líquido"]
-            menu("Conversão de Volume", options)
+            menu("Conversão de Volume", options, pages)
             selected = parse(Int, readline())
 
             if selected == 2
                 options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
-                menu("Conversão de Volume", options)
+                menu("Conversão de Volume", options, pages)
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
@@ -133,7 +133,7 @@ function main()
             end
             if selected == 1
                 options = ["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
-                menu("Conversão de Volume", options)
+                menu("Conversão de Volume", options, pages)
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
