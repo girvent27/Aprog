@@ -21,7 +21,7 @@ function main()
             options = ["Radiano -> Grau", "Grau -> Radiano", "Imprimir Tabela Radiano -> Grau", "Imprimir Tabela Radiano -> Grau"]
             menu("Conversão de Angulos", options)
 
-            
+            return
         end
 
         if pages[1] == 2
@@ -47,7 +47,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "area", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "area", init_options)
             end
         end
         if pages[1] == 3
@@ -57,7 +57,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "comprimento", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "comprimento", init_options)
             end
         end
         if pages[1] == 4
@@ -67,7 +67,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "forca", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "forca", init_options)
             end
         end
         if pages[1] == 5
@@ -77,7 +77,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", false, "massa")
+                (pages, index) = conversion_menu(pages, index, options, "float", false, "massa", init_options)
             end
         end
         if pages[1] == 6
@@ -87,18 +87,16 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", true, "moeda", init_options)
+                (pages, index) = conversion_menu_moeda(pages, index, options, "float", true, "moeda", init_options)
             end
         end
         if pages[1] == 7
             options = ["Megapascal", "Quilopascal", "PascalSistema", "KSI", "PSI"]
-
-
             menu("Conversão de Pressão", options)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", false, "pressao", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "pressao", init_options)
             end
         end
         if pages[1] == 8
@@ -107,7 +105,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "temperatura", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "temperatura", init_options)
             end
         end
         if pages[1] == 9
@@ -116,7 +114,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
             end
         end
         if pages[1] == 10
@@ -130,7 +128,7 @@ function main()
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
-                    conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                    (pages, index) = conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
                 end
             end
             if selected == 1
@@ -139,7 +137,7 @@ function main()
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
-                    conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                    (pages, index) = conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
                 end
             end
             if selected == 0
