@@ -1,5 +1,5 @@
 include("contas/angulo.jl")
 
 function conta(number)
-    println(number)
+    return number * 2
 end

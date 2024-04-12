@@ -36,7 +36,10 @@ function main()
         end
     end
                   
-    return print("\n================================================\nAgradecemos por usar nosso serviço de conversão. \n\n<Jean/> & <Brunno/>\n================================================")
+    return print("\n================================================
+Agradecemos por usar nosso serviço de conversão. \n
+              <Jean/> & <Brunno/>
+================================================")
 end
 
 
