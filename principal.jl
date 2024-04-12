@@ -14,7 +14,7 @@ function main()
         if pages[1] == 0
             menu("Conversor de Medidas, Unidades e Moedas", init_options)
 
-            (pages, index) = read_page(pages, index, options)
+            (pages, index) = read_page(pages, index, init_options)
         end
 
         if pages[1] == 1
@@ -105,13 +105,31 @@ function main()
                 conversion_menu(pages, index, options, "float", false, "pressao")
             end
         end
-        if pages[1] == 7
+        if pages[1] == 8
             options = ["Kelvin", "Grau Celsius", "Grau Fahrenheit", "Grau Rankine", "Grau Réaumur", "Grau Newton", "Grau Delisle"]
             menu("Conversão de Temperatura", options)
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", false, "pressao")
+                conversion_menu_moeda(pages, index, options, "float", true, "temperatura")
+            end
+        end
+        if pages[1] == 9
+            options = ["Quilômetro por hora", "Metro por segundo", "Quilômetro por segundo", "Pé por segundo", "Milha por hora", "Milha por segundo"]
+            menu("Conversão de Temperatura", options)
+
+            (pages, index) = read_page(pages, index, options)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu_moeda(pages, index, options, "float", true, "velocidade")
+            end
+        end
+        if pages[1] == 10
+            options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
+            menu("Conversão de Temperatura", options)
+
+            (pages, index) = read_page(pages, index, options)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu_moeda(pages, index, options, "float", true, "velocidade")
             end
         end
     end
@@ -124,3 +142,5 @@ Agradecemos por usar nosso serviço de conversão. \n
 ================================================")
 end
 #Consertar array primario sendo trocado pelo primario no titulo
+#fazer volume solido e liq
+#["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
