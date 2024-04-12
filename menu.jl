@@ -2,16 +2,16 @@ include("contas.jl")
 
 function menu(title::String , options) #Menu generico que recebe o titulo e imprime as opções listadas
     clear()
-    println("==== $title ====\n")
+    println("\n ==========================\n|          $title          \n =================================")
     println("Opcões:")
     for i in 1:length(options)
-        print("$i - ")
-        println(options[i])
+        print("\n  $i - ")
+        print(options[i])
     end
     if title == "Conversor de Medidas, Unidades e Moedas"
-        println("\n0 - Sair")
+        println("\n------------------\n 0 - Sair")
     else
-        println("\n0 - Voltar")
+        println("\n-------------------\n 0 - Voltar")
     end    
 end
 
@@ -57,16 +57,17 @@ end
 
 #=======================================================================================================================#
 
-function conversion_menu(pages, index, options, number_type, negative_number::Bool)
+function conversion_menu(pages, index, options, number_type, negative_number::Bool, conta_a_fazer)
     clear()
     title = options[pages[1]]
     println("==== Conversor de $title ====\n")
     print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
-    #number = parse(Int, readline())
     number = read_conversion(number_type, negative_number)
-    result = conta(number, conta)
+    unidade_origem = options[pages[2]]
+    unidade_destino = options[pages[3]]
+    result = conta(number, conta_a_fazer, unidade_origem, unidade_destino)
 
-    println("Resultado da conta é $result\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
+    println("O valor de $number $(options[pages[2]]) para $(options[pages[3]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
     return (pages, index) = read_page(pages, index, options)
 
 end

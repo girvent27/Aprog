@@ -23,16 +23,46 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
 
-            if pages[3] > 0
-                conversion_menu(pages, index, options, "float", true)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu(pages, index, options, "float", true, "angulo")
             end
         end
 
         if pages[1] == 2
-            options = ["Decimetro Quadrado (dm²)", "Milimetro Quadrado (mm²)", "Centimetro Quadrado(cm²)", "Metro Quadrado(m²)", "Kilometro Quadrado(Km²)", "Polegada Quadrada", "Pé Quadrado"]
+            options = [
+                "quilômetro quadrado",
+                "hectare",
+                "are",
+                "metro quadrado",
+                "decímetro quadrado",
+                "centímetro quadrado",
+                "milímetro quadrado",
+                "polegada quadrada",
+                "pé quadrado",
+                "jarda quadrada",
+                "rod quadrado",
+                "rood",
+                "acre",
+                "homestead",
+                "milha quadrada",
+                "légua quadrada"
+            ]
             menu("Conversão de Area", options)
 
             (pages, index) = read_page(pages, index, options)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu(pages, index, options, "float", true, "area")
+            end
+        end
+        if pages[1] == 3
+            options = ["quilômetro", "hectômetro", "decâmetro", "metro", "decímetro", "centímetro", "milímetro", "polegada", "pé", "jarda", "rod", "furlong", "corrente", "mil", "milha", "légua"]
+
+            menu("Conversão de Comprimento", options)
+
+            (pages, index) = read_page(pages, index, options)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu(pages, index, options, "float", true, "comprimento")
+            end
         end
     end
     
@@ -43,5 +73,4 @@ Agradecemos por usar nosso serviço de conversão. \n
               <Jean/> & <Brunno/>
 ================================================")
 end
-
 
