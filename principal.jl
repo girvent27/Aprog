@@ -22,6 +22,10 @@ function main()
             menu("Conversão de Angulos", options)
 
             (pages, index) = read_page(pages, index, options)
+
+            if pages[3] > 0
+                conversion_menu(pages, index, options, float, true)
+            end
         end
 
         if pages[1] == 2

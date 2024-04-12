@@ -1,7 +1,5 @@
 include("contas/angulo.jl")
 
-
-struct metro_imperial
-    dm::Float64
-    cm::Float64
+function conta(number)
+    println(number)
 end
