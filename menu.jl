@@ -57,9 +57,9 @@ end
 
 #=======================================================================================================================#
 
-function conversion_menu(pages, index, options, number_type, negative_number::Bool, conta_a_fazer)
+function conversion_menu(pages, index, options, number_type, negative_number::Bool, conta_a_fazer, init_options)
     clear()
-    title = options[pages[1]]
+    title = init_options[pages[1]]
     println("==== Conversor de $title ====\n")
     print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
     number = read_conversion(number_type, negative_number)
@@ -72,9 +72,9 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
 
 end
 
-function conversion_menu_moeda(pages, index, options, number_type, negative_number::Bool, conta_a_fazer)
+function conversion_menu_moeda(pages, index, options, number_type, negative_number::Bool, conta_a_fazer, init_options)
     clear()
-    title = options[pages[1]]
+    title = init_options[pages[1]]
     println("==== Conversor de $title ====\n")
     print("Digite o(a) valor da cotação de 1 $(options[pages[2]]) em $(options[pages[3]]): ")
     number_1 = read_conversion(number_type, negative_number)

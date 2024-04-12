@@ -24,7 +24,7 @@ function main()
             (pages, index) = read_page(pages, index, options)
 
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "angulo")
+                conversion_menu(pages, index, options, "float", true, "angulo", init_options)
             end
         end
 
@@ -51,7 +51,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "area")
+                conversion_menu(pages, index, options, "float", true, "area", init_options)
             end
         end
         if pages[1] == 3
@@ -61,7 +61,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "comprimento")
+                conversion_menu(pages, index, options, "float", true, "comprimento", init_options)
             end
         end
         if pages[1] == 4
@@ -71,7 +71,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "forca")
+                conversion_menu(pages, index, options, "float", true, "forca", init_options)
             end
         end
         if pages[1] == 5
@@ -91,7 +91,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", false, "moeda")
+                conversion_menu_moeda(pages, index, options, "float", false, "moeda", init_options)
             end
         end
         if pages[1] == 7
@@ -102,7 +102,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", false, "pressao")
+                conversion_menu(pages, index, options, "float", false, "pressao", init_options)
             end
         end
         if pages[1] == 8
@@ -111,7 +111,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", true, "temperatura")
+                conversion_menu(pages, index, options, "float", true, "temperatura", init_options)
             end
         end
         if pages[1] == 9
@@ -120,7 +120,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", true, "velocidade")
+                conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
             end
         end
         if pages[1] == 10
@@ -129,7 +129,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", true, "velocidade")
+                conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
             end
         end
     end

@@ -1,4 +1,3 @@
-include("contas/angulo.jl")
 include("contas/area_e_comprimento.jl")
 include("contas/forca.jl")
 include("contas/massa.jl")
