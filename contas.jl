@@ -8,13 +8,13 @@ include("contas/volumes.jl")
 
 function conta(numero, conta, unidade_origem, unidade_destino)
 
-    if conta = "angulo_grau_rad"
+    if conta == "angulo_grau_rad"
         # Função para converter graus para radianos
         function graus_para_radianos(numero)
             return numero * π / 180
         end
     end
-    if conta = "angulo_rad_grau"
+    if conta == "angulo_rad_grau"
         # Função para converter radianos para graus
         function radianos_para_graus(numero)
             return numero * 180 / π
