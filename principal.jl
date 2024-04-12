@@ -21,11 +21,7 @@ function main()
             options = ["Radiano -> Grau", "Grau -> Radiano", "Imprimir Tabela Radiano -> Grau", "Imprimir Tabela Radiano -> Grau"]
             menu("Conversão de Angulos", options)
 
-            (pages, index) = read_page(pages, index, options)
-
-            if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "angulo", init_options)
-            end
+            
         end
 
         if pages[1] == 2

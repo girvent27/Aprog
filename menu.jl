@@ -29,6 +29,13 @@ function read_page(pages, index::Int, options) #Lê a pagina que o usuário dese
         print("Erro...\nDigite uma opção Válida: ")
         page_index = parse(Int, readline())
     end
+    if index == 3
+        while pages[2] === pages[3]
+            # Validação do numero digitado não ultrapassar o limite ou tipo
+            print("Erro...\nDigite uma opção Válida: ")
+            page_index = parse(Int, readline())
+        end
+    end
     if page_index == 0 && pages[1] == 0 #se estiver no menu inicial e digitar '0', acaba o programa com uma mensagem
         pages[1] = pages[1] - 1
         return pages            
@@ -70,6 +77,18 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
     return (pages, index) = read_page(pages, index, options)
 
 end
+##############################################################################################################
+function conversion_menu_angulo()
+    clear()
+    title = init_options[pages[1]]
+    println("==== Conversor de $title ====\n")
+    print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
+    number = read_conversion(number_type, negative_number)
+    unidade_origem = options[pages[2]]
+    unidade_destino = options[pages[3]]
+    result = conta(number, conta_a_fazer, unidade_origem, unidade_destino)
+end
+##############################################################################################################
 
 function conversion_menu_moeda(pages, index, options, number_type, negative_number::Bool, conta_a_fazer, init_options)
     clear()
