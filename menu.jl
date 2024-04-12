@@ -112,5 +112,5 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
 end
 
 function clear() # Limpar terminal de comando para cada novo menu
-    Base.run(`clear`)
+#    Base.run(`clear`)
 end
