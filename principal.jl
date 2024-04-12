@@ -91,11 +91,11 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                conversion_menu_moeda(pages, index, options, "float", false, "moeda", init_options)
+                conversion_menu_moeda(pages, index, options, "float", true, "moeda", init_options)
             end
         end
         if pages[1] == 7
-            options = ["Megapascal", "Quilopascal", "PascalSistema", "KSI", "PSI", "Libra por polegada quadrada"]
+            options = ["Megapascal", "Quilopascal", "PascalSistema", "KSI", "PSI"]
 
 
             menu("Conversão de Pressão", options)
@@ -128,7 +128,7 @@ function main()
             menu("Conversão de Volume", options)
             selected = parse(Int, readline())
 
-            if selected == "liquido"
+            if selected == 2
                 options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
                 menu("Conversão de Volume", options)
 
@@ -137,7 +137,7 @@ function main()
                     conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
                 end
             end
-            if selected == "solido"
+            if selected == 1
                 options = ["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
                 menu("Conversão de Volume", options)
 
@@ -145,6 +145,11 @@ function main()
                 if pages[2] > 0 && pages[3] > 0
                     conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
                 end
+            end
+            if selected == 0
+                    pages[index] = 0 #Zera o número do array na index atual
+                    index = index - 1 #Mudando a index para a anterior para mudar o menu atual para o anterior
+                    pages[index] = 0 #Zera o número do array na index anterior
             end
         end
     end

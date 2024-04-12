@@ -44,7 +44,6 @@ function read_page(pages, index::Int, options) #Lê a pagina que o usuário dese
             pages[index] = page_index 
             if index == 3
                 return pages, index 
-
             else
                 index = index + 1 #Mudando a Index para a anterior para mudar o menu atual para o anterior
 
@@ -85,7 +84,6 @@ function conversion_menu_moeda(pages, index, options, number_type, negative_numb
 
     println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
     return (pages, index) = read_page(pages, index, options)
-
 end
 
 function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo de variavel (int / float) e se usara numeros negativos
@@ -100,7 +98,7 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
     number = parse(Int, readline())
    end
 
-    if type == "float" && negative == false #Para Decimais Positivos
+    if type == "float" && !negative  #Para Decimais Positivos
         number = parse(Float64, readline())
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
