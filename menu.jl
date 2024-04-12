@@ -72,6 +72,22 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
 
 end
 
+function conversion_menu_moeda(pages, index, options, number_type, negative_number::Bool, conta_a_fazer)
+    clear()
+    title = options[pages[1]]
+    println("==== Conversor de $title ====\n")
+    print("Digite o(a) valor da cotação de 1 $(options[pages[2]]) em $(options[pages[3]]): ")
+    number_1 = read_conversion(number_type, negative_number)
+
+    print("Digite a quantidade, real positivo, em $(options[pages[2]]) a ser convertido: ")
+    number_2 = read_conversion(number_type, negative_number)
+    result = number_1 * number_2
+
+    println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
+    return (pages, index) = read_page(pages, index, options)
+
+end
+
 function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo de variavel (int / float) e se usara numeros negativos
     if type == "int" && negative == false #Para Inteiros Positivos
         number = parse(Int, readline())
@@ -88,7 +104,7 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
         number = parse(Float64, readline())
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
-            number = parse(Int, readline())
+            number = parse(Float64, readline())
         end
     end
     if type == "float" && negative #Para Decimais
@@ -98,5 +114,5 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
 end
 
 function clear() # Limpar terminal de comando para cada novo menu
-#    Base.run(`cls`)
+#    Base.run(`clear`)
 end

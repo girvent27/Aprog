@@ -52,7 +52,7 @@ function converter_area(numero, unidade_origem, unidade_destino)
         elseif unidade_origem == "légua quadrada"
             numero * legua_to_m2
         else
-            return "Unidade de área de origem não suportada"
+            return
         end
 
     # Convertendo para a unidade de destino
@@ -90,7 +90,7 @@ function converter_area(numero, unidade_origem, unidade_destino)
         elseif unidade_destino == "légua quadrada"
             area_em_metros_quadrados / legua_to_m2
         else
-            return "Unidade de área de destino não suportada"
+            return
         end
 
     return resultado
@@ -151,7 +151,7 @@ function converter_comprimento(numero, unidade_origem, unidade_destino)
         elseif unidade_origem == "légua"
             numero * legua_to_m
         else
-            return "Unidade de comprimento de origem não suportada"
+            return 
         end
 
     # Convertendo para a unidade de destino
@@ -189,7 +189,7 @@ function converter_comprimento(numero, unidade_origem, unidade_destino)
         elseif unidade_destino == "légua"
             comprimento_em_metros / legua_to_m
         else
-            return "Unidade de comprimento de destino não suportada"
+            return
         end
 
     return resultado

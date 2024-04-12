@@ -15,7 +15,7 @@ function converter_forca(numero, unidade_origem, unidade_destino)
         elseif unidade_origem == "Libra-força"
             numero / N_to_lbf
         else
-            return "Unidade de força de origem não suportada"
+            return 
         end
 
     # Convertendo para a unidade de destino
@@ -29,7 +29,7 @@ function converter_forca(numero, unidade_origem, unidade_destino)
         elseif unidade_destino == "Libra-força"
             forca_em_unidade_origem * N_to_lbf
         else
-            return "Unidade de força de destino não suportada"
+            return
         end
 
     return resultado
