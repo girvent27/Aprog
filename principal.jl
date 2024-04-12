@@ -24,7 +24,7 @@ function main()
             (pages, index) = read_page(pages, index, options)
 
             if pages[3] > 0
-                conversion_menu(pages, index, options, float, true)
+                conversion_menu(pages, index, options, "float", true)
             end
         end
 
@@ -35,8 +35,10 @@ function main()
             (pages, index) = read_page(pages, index, options)
         end
     end
-                  
-    return print("\n================================================
+    
+    clear()
+    return print("\n
+================================================
 Agradecemos por usar nosso serviço de conversão. \n
               <Jean/> & <Brunno/>
 ================================================")

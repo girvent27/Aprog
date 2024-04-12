@@ -61,36 +61,36 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
     clear()
     title = options[pages[1]]
     println("==== Conversor de $title ====\n")
-    println("Digite o(a) valor da conversão: ")
-    number = parse(Int, readline())
-    #number = read_conversion(number_type, negative_number::Bool)
-    result = conta(number)
+    print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
+    #number = parse(Int, readline())
+    number = read_conversion(number_type, negative_number)
+    result = conta(number, conta)
 
     println("Resultado da conta é $result\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
     return (pages, index) = read_page(pages, index, options)
 
 end
 
-function read_conversion(type, negative::Bool)
-    if type == "int" && negative == false
+function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo de variavel (int / float) e se usara numeros negativos
+    if type == "int" && negative == false #Para Inteiros Positivos
         number = parse(Int, readline())
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
             number = parse(Int, readline())
         end
     end
-   if type == "int" && negative
+   if type == "int" && negative #Para Inteiros
     number = parse(Int, readline())
    end
 
-    if type == "float" && negative == false
+    if type == "float" && negative == false #Para Decimais Positivos
         number = parse(Float64, readline())
         while number < 0 
             print("Número Inválido, \n Digite o valor da conversão: ")
             number = parse(Int, readline())
         end
     end
-    if type == "float" && negative
+    if type == "float" && negative #Para Decimais
         number = parse(Float64, readline())
     end
     
