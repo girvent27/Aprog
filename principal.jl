@@ -124,12 +124,27 @@ function main()
             end
         end
         if pages[1] == 10
-            options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
-            menu("Conversão de Temperatura", options)
+            options = ["Sólido", "Líquido"]
+            menu("Conversão de Volume", options)
+            selected = parse(Int, readline())
 
-            (pages, index) = read_page(pages, index, options)
-            if pages[2] > 0 && pages[3] > 0
-                conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+            if selected == "liquido"
+                options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
+                menu("Conversão de Volume", options)
+
+                (pages, index) = read_page(pages, index, options)
+                if pages[2] > 0 && pages[3] > 0
+                    conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                end
+            end
+            if selected == "solido"
+                options = ["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
+                menu("Conversão de Volume", options)
+
+                (pages, index) = read_page(pages, index, options)
+                if pages[2] > 0 && pages[3] > 0
+                    conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                end
             end
         end
     end
@@ -143,4 +158,3 @@ Agradecemos por usar nosso serviço de conversão. \n
 end
 #Consertar array primario sendo trocado pelo primario no titulo
 #fazer volume solido e liq
-#["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
