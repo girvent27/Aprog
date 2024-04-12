@@ -64,6 +64,16 @@ function main()
                 conversion_menu(pages, index, options, "float", true, "comprimento")
             end
         end
+        if pages[1] == 4
+            options = ["Newton", "Quilograma força", "Dina", "Libra-força"]
+
+            menu("Conversão de Força", options)
+
+            (pages, index) = read_page(pages, index, options)
+            if pages[2] > 0 && pages[3] > 0
+                conversion_menu(pages, index, options, "float", true, "forca")
+            end
+        end
     end
     
     clear()
@@ -73,4 +83,6 @@ Agradecemos por usar nosso serviço de conversão. \n
               <Jean/> & <Brunno/>
 ================================================")
 end
+
+
 
