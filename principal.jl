@@ -18,10 +18,10 @@ function main()
         end
 
         if pages[1] == 1
-            options = ["Radiano -> Grau", "Grau -> Radiano", "Imprimir Tabela Radiano -> Grau", "Imprimir Tabela Radiano -> Grau"]
+            options = ["Radiano -> Grau", "Grau -> Radiano"]
             menu("Conversão de Angulos", options, pages)
-
-            return
+            read_page(pages, index, options)
+            (pages, index) = conversion_menu_angulo(pages, index, options, "float", true, options[pages[2]], init_options)
         end
 
         if pages[1] == 2
@@ -77,7 +77,7 @@ function main()
 
             (pages, index) = read_page(pages, index, options)
             if pages[2] > 0 && pages[3] > 0
-                (pages, index) = conversion_menu(pages, index, options, "float", false, "massa", init_options)
+                (pages, index) = conversion_menu(pages, index, options, "float", true, "massa", init_options)
             end
         end
         if pages[1] == 6
@@ -122,22 +122,22 @@ function main()
             menu("Conversão de Volume", options, pages)
             selected = parse(Int, readline())
 
-            if selected == 2
-                options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico Sistema de medidas métrico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
+            if selected == 1
+                options = ["Quilômetro cúbico ", "Hectômetro cúbico ", "Decâmetro cúbico ", "Metro cúbico ", "Decímetro cúbico", "Polegada cúbica ", "Pé cúbico ", "Jarda cúbica ", "Acre-pé", "Milha cúbica "]
                 menu("Conversão de Volume", options, pages)
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
-                    (pages, index) = conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                    (pages, index) = conversion_menu(pages, index, options, "float", true, "volume", init_options)
                 end
             end
-            if selected == 1
-                options = ["Quilolitro", "Hectolitro", "Decalitro", "Litro", "DecilitroSistema de medidas métrico", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
+            if selected == 2
+                options = ["Quilolitro", "Hectolitro", "Decalitro", "Litro", "Decilitro", "barril", "galão", "quarto", "pinto", "gill", "onça líquida ou fluida", "dracma líquido ou fluido", "minim"]
                 menu("Conversão de Volume", options, pages)
 
                 (pages, index) = read_page(pages, index, options)
                 if pages[2] > 0 && pages[3] > 0
-                    (pages, index) = conversion_menu(pages, index, options, "float", true, "velocidade", init_options)
+                    (pages, index) = conversion_menu(pages, index, options, "float", true, "volume", init_options)
                 end
             end
             if selected == 0

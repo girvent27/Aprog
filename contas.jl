@@ -8,17 +8,16 @@ include("contas/volumes.jl")
 
 function conta(numero, conta, unidade_origem, unidade_destino)
 
-    if conta == "angulo_grau_rad"
+    if conta == "Grau -> Radiano"
         # Função para converter graus para radianos
-        function graus_para_radianos(numero)
-            return numero * π / 180
-        end
+            result = (numero * 3.14) / 180
+            return result
+        
     end
-    if conta == "angulo_rad_grau"
+    if conta == "Radiano -> Grau"
         # Função para converter radianos para graus
-        function radianos_para_graus(numero)
-            return numero * 180 / π
-        end
+            result = (numero * 180) / 3.14
+            return result
     end
     if conta == "area"
         return converter_area(numero, unidade_origem, unidade_destino)
@@ -40,6 +39,9 @@ function conta(numero, conta, unidade_origem, unidade_destino)
     end
     if conta == "velocidade"
         return converter_velocidade(numero, unidade_origem, unidade_destino)
+    end
+    if conta == "volume"
+        return converter_volume(numero, unidade_origem, unidade_destino)
     end
 end 
 

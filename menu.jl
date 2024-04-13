@@ -35,7 +35,7 @@ function read_page(pages, index::Int, options) #Lê a pagina que o usuário dese
         page_index = parse(Int, readline())
     end
     if index == 3
-        while pages[2] === pages[3]
+        while pages[2] == pages[3]
             # Validação do numero digitado não ultrapassar o limite ou tipo
             print("Erro...\nDigite uma opção Válida: ")
             page_index = parse(Int, readline())
@@ -67,10 +67,10 @@ function read_page(pages, index::Int, options) #Lê a pagina que o usuário dese
 end
 
 #=======================================================================================================================#
-function read_simple()
+function read_simple(limite)
     print("\nDigite uma opção: ")
     page_index = parse(Int, readline())
-    while page_index > 1 || page_index < 0
+    while page_index > limite || page_index < 0
         # Validação do numero digitado não ultrapassar o limite ou tipo
         print("Erro...\nDigite uma opção Válida: ")
         page_index = parse(Int, readline())
@@ -91,7 +91,7 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
 
     println("O valor de $number $(options[pages[2]]) para $(options[pages[3]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
     #return (pages, index) = read_page(pages, index, options)
-    repeat_opt = read_simple()
+    repeat_opt = read_simple(1)
     if repeat_opt == 1
         repeat = true
     end
@@ -103,6 +103,7 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
     end
 
     while repeat
+        clear()
         println("==== Conversor de $title ====\n")
         print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
         number = read_conversion(number_type, negative_number)
@@ -111,7 +112,7 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
         result = conta(number, conta_a_fazer, unidade_origem, unidade_destino)
 
         println("O valor de $number $(options[pages[2]]) para $(options[pages[3]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
-        repeat_opt = read_simple()
+        repeat_opt = read_simple(1)
         if repeat_opt == 1
             repeat = true
         end
@@ -124,15 +125,52 @@ function conversion_menu(pages, index, options, number_type, negative_number::Bo
     end
 end
 ##############################################################################################################
-function conversion_menu_angulo()
+function conversion_menu_angulo(pages, index, options, number_type, negative_number::Bool, conta_a_fazer, init_options)
     clear()
     title = init_options[pages[1]]
     println("==== Conversor de $title ====\n")
-    print("Digite o(a) valor da conversão de $(options[pages[2]]) para $(options[pages[3]]): ")
+    print("Digite o(a) valor da conversão de $(options[pages[2]]): ")
     number = read_conversion(number_type, negative_number)
     unidade_origem = options[pages[2]]
-    unidade_destino = options[pages[3]]
+    unidade_destino = ""
     result = conta(number, conta_a_fazer, unidade_origem, unidade_destino)
+
+    println("O valor de $number em $(options[pages[2]]) é de $result\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
+    #return (pages, index) = read_page(pages, index, options)
+    repeat_opt = read_simple(1)
+    if repeat_opt == 1
+        repeat = true
+    end
+    if repeat_opt == 0
+        pages[2] = 0
+        pages[3] = 0
+        index = 2
+        return pages, index
+    end
+
+    while repeat
+        clear()
+        println("==== Conversor de $title ====\n")
+        print("Digite o(a) valor da conversão de $(options[pages[2]]): ")
+        number = read_conversion(number_type, negative_number)
+
+        unidade_origem = options[pages[2]]
+        unidade_destino = ""
+        result = conta(number, conta_a_fazer, unidade_origem, unidade_destino)
+
+        println("O valor de $number em $(options[pages[2]]) é de $result\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
+        #return (pages, index) = read_page(pages, index, options)
+        repeat_opt = read_simple(1)
+        if repeat_opt == 1
+            repeat = true
+        end
+        if repeat_opt == 0
+            pages[2] = 0
+            pages[3] = 0
+            index = 2
+            return pages, index
+        end
+    end
 end
 ##############################################################################################################
 
@@ -148,7 +186,7 @@ function conversion_menu_moeda(pages, index, options, number_type, negative_numb
     result = number_1 * number_2
 
     println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
-    repeat_opt = read_simple()
+    repeat_opt = read_simple(1)
     if repeat_opt == 1
         repeat = true
     end
@@ -170,7 +208,7 @@ function conversion_menu_moeda(pages, index, options, number_type, negative_numb
         result = number_1 * number_2
 
         println("O valor de $number_2 $(options[pages[2]]) é de $result $(options[pages[3]])\n Opções: \n 1 - Repetir Conta\n 0 - Volta ao Menu Anterior")
-        repeat_opt = read_simple()
+        repeat_opt = read_simple(1)
         if repeat_opt == 1
             repeat = true
         end
@@ -215,5 +253,5 @@ function read_conversion(type, negative::Bool) #Lê um numero; pede o $type tipo
 end
 
 function clear() # Limpar terminal de comando para cada novo menu
-#    Base.run(`clear`)
+    Base.run(`clear`)
 end
