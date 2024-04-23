@@ -177,7 +177,7 @@ function editar_estudante(turma, estudante)
         estudante.matricula = nova_matricula
         println("Matrícula alterada com sucesso!")
     elseif opcao in ["3", "4", "5"]
-        indice = parse(Int, opcao)
+        indice = parse(Int, opcao) - 2
         println("Digite a nova nota da prova $indice:")
         nova_nota = parse(Int, readline())
         estudante.notas_provas[indice] = nova_nota
@@ -228,7 +228,7 @@ end
 # Função para escrever a turma no arquivo
 function escrever_turma_arquivo(nome_arquivo, turma)
     try
-        open(nome_arquivo, "w") do file
+        open(nome_arquivo, "a") do file
             for estudante in turma
                 notas_provas_str = join(estudante.notas_provas, " ")
                 notas_trabalhos_str = join(estudante.notas_trabalhos, " ")
@@ -240,8 +240,6 @@ function escrever_turma_arquivo(nome_arquivo, turma)
         println("Erro ao salvar a turma no arquivo!")
     end
 end
-
-# Restante do código...
 
 # Função principal
 function main()
@@ -275,11 +273,28 @@ function main()
                 println("Digite o nome do arquivo para a nova turma:")
                 nome_arquivo = readline()
                 try
-                    open(nome_arquivo, "w") do file
-                        println(file, "") # Cria um arquivo vazio
+                    if isfile(nome_arquivo)
+                        println("Já existe um arquivo com esse nome. Deseja sobrescrevê-lo? (s/n)")
+                        resposta = readline()
+                        if resposta == "s"
+                            println("Sobrescrevendo o arquivo...")
+                            # Abre o arquivo em modo de escrita, sobrescrevendo o conteúdo anterior, se houver
+                            open(nome_arquivo, "w") do file
+                                println(file, "") # Cria um arquivo vazio
+                            end
+                            println("Arquivo $nome_arquivo criado com sucesso!")
+
+                        else
+                            println("Operação cancelada.")
+                            return 
+                        end
+                    else
+                        open(nome_arquivo, "w") do file
+                            println(file, "") # Cria um arquivo vazio
+                        end
+                        println("Arquivo $nome_arquivo criado com sucesso!")
+                        turma = Estudante[]
                     end
-                    println("Arquivo $nome_arquivo criado com sucesso!")
-                    turma = Estudante[]
                 catch
                     println("Erro ao criar o arquivo!")
                 end
